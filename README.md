@@ -1,5 +1,10 @@
 # XR Components
 
+## Features
+
+-   XRControllerVibratation
+-   XRNodeController
+
 ## Installation
 
 ### Unity Package Manager _(Unity 2018.3)_
