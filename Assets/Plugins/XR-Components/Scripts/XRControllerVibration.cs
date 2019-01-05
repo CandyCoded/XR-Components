@@ -25,6 +25,12 @@ namespace CandyCoded.XRComponents
                     device.SendHapticBuffer(0, buffer);
 
                 }
+                else if (hapticCapabilities.supportsImpulse)
+                {
+
+                    device.SendHapticImpulse(0, amplitude, seconds);
+
+                }
 
             }
 
