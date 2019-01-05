@@ -10,9 +10,11 @@ namespace CandyCoded.XRComponents
         public static void VibrateController(this XRNode node, float seconds, float amplitude)
         {
 
+            var device = InputDevices.GetDeviceAtXRNode(node);
+
             var hapticCapabilities = new HapticCapabilities();
 
-            if (InputDevices.GetDeviceAtXRNode(node).TryGetHapticCapabilities(out hapticCapabilities))
+            if (device.TryGetHapticCapabilities(out hapticCapabilities))
             {
 
                 if (hapticCapabilities.supportsBuffer)
@@ -20,7 +22,7 @@ namespace CandyCoded.XRComponents
 
                     var buffer = GenerateHapticBufferWithAmplitude(seconds, amplitude, hapticCapabilities.bufferFrequencyHz);
 
-                    InputDevices.GetDeviceAtXRNode(node).SendHapticBuffer(0, buffer);
+                    device.SendHapticBuffer(0, buffer);
 
                 }
 
@@ -31,9 +33,11 @@ namespace CandyCoded.XRComponents
         public static void VibrateController(this XRNode node, float seconds, AnimationCurve animationCurve)
         {
 
+            var device = InputDevices.GetDeviceAtXRNode(node);
+
             var hapticCapabilities = new HapticCapabilities();
 
-            if (InputDevices.GetDeviceAtXRNode(node).TryGetHapticCapabilities(out hapticCapabilities))
+            if (device.TryGetHapticCapabilities(out hapticCapabilities))
             {
 
                 if (hapticCapabilities.supportsBuffer)
@@ -41,7 +45,7 @@ namespace CandyCoded.XRComponents
 
                     var buffer = GenerateHapticBufferFromAnimationCuve(animationCurve, hapticCapabilities.bufferFrequencyHz);
 
-                    InputDevices.GetDeviceAtXRNode(node).SendHapticBuffer(0, buffer);
+                    device.SendHapticBuffer(0, buffer);
 
                 }
 
