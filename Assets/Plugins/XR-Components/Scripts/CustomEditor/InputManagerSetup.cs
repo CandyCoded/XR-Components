@@ -3,6 +3,7 @@
 #if UNITY_EDITOR
 
 using UnityEditor;
+using static CandyCoded.XRComponents.XRInput;
 
 namespace CandyCoded.XRComponents
 {
@@ -26,23 +27,23 @@ namespace CandyCoded.XRComponents
         public static void SetupAxes()
         {
 
-            AddAxis(new Axis { m_Name = "Oculus_CrossPlatform_PrimaryIndexTrigger", dead = 0.19f, sensitivity = 1, type = 2, axis = 8 });
-            AddAxis(new Axis { m_Name = "Oculus_CrossPlatform_SecondaryIndexTrigger", dead = 0.19f, sensitivity = 1, type = 2, axis = 9 });
-            AddAxis(new Axis { m_Name = "Oculus_CrossPlatform_PrimaryHandTrigger", dead = 0.19f, sensitivity = 1, type = 2, axis = 10 });
-            AddAxis(new Axis { m_Name = "Oculus_CrossPlatform_SecondaryHandTrigger", dead = 0.19f, sensitivity = 1, type = 2, axis = 11 });
+            AddAxis(new Axis { m_Name = Oculus.InputNames.Oculus_CrossPlatform_PrimaryIndexTrigger.ToString(), dead = 0.19f, sensitivity = 1, type = 2, axis = 8 });
+            AddAxis(new Axis { m_Name = Oculus.InputNames.Oculus_CrossPlatform_SecondaryIndexTrigger.ToString(), dead = 0.19f, sensitivity = 1, type = 2, axis = 9 });
+            AddAxis(new Axis { m_Name = Oculus.InputNames.Oculus_CrossPlatform_PrimaryHandTrigger.ToString(), dead = 0.19f, sensitivity = 1, type = 2, axis = 10 });
+            AddAxis(new Axis { m_Name = Oculus.InputNames.Oculus_CrossPlatform_SecondaryHandTrigger.ToString(), dead = 0.19f, sensitivity = 1, type = 2, axis = 11 });
 
-            AddAxis(new Axis { m_Name = "Oculus_CrossPlatform_Button_1", positiveButton = "joystick button 0", gravity = 1000, dead = 0.001f, sensitivity = 1000 });
-            AddAxis(new Axis { m_Name = "Oculus_CrossPlatform_Button_2", positiveButton = "joystick button 1", gravity = 1000, dead = 0.001f, sensitivity = 1000 });
-            AddAxis(new Axis { m_Name = "Oculus_CrossPlatform_Button_3", positiveButton = "joystick button 2", gravity = 1000, dead = 0.001f, sensitivity = 1000 });
-            AddAxis(new Axis { m_Name = "Oculus_CrossPlatform_Button_4", positiveButton = "joystick button 3", gravity = 1000, dead = 0.001f, sensitivity = 1000 });
+            AddAxis(new Axis { m_Name = Oculus.InputNames.Oculus_CrossPlatform_Button_1.ToString(), positiveButton = "joystick button 0", gravity = 1000, dead = 0.001f, sensitivity = 1000 });
+            AddAxis(new Axis { m_Name = Oculus.InputNames.Oculus_CrossPlatform_Button_2.ToString(), positiveButton = "joystick button 1", gravity = 1000, dead = 0.001f, sensitivity = 1000 });
+            AddAxis(new Axis { m_Name = Oculus.InputNames.Oculus_CrossPlatform_Button_3.ToString(), positiveButton = "joystick button 2", gravity = 1000, dead = 0.001f, sensitivity = 1000 });
+            AddAxis(new Axis { m_Name = Oculus.InputNames.Oculus_CrossPlatform_Button_4.ToString(), positiveButton = "joystick button 3", gravity = 1000, dead = 0.001f, sensitivity = 1000 });
 
-            AddAxis(new Axis { m_Name = "Oculus_CrossPlatform_Button_PrimaryThumbstick", positiveButton = "joystick button 8", sensitivity = 0.1f });
-            AddAxis(new Axis { m_Name = "Oculus_CrossPlatform_Button_SecondaryThumbstick", positiveButton = "joystick button 9", sensitivity = 0.1f });
+            AddAxis(new Axis { m_Name = Oculus.InputNames.Oculus_CrossPlatform_Button_PrimaryThumbstick.ToString(), positiveButton = "joystick button 8", sensitivity = 0.1f });
+            AddAxis(new Axis { m_Name = Oculus.InputNames.Oculus_CrossPlatform_Button_SecondaryThumbstick.ToString(), positiveButton = "joystick button 9", sensitivity = 0.1f });
 
-            AddAxis(new Axis { m_Name = "Oculus_CrossPlatform_PrimaryThumbstickHorizontal", dead = 0.19f, sensitivity = 1, invert = false, type = 2, axis = 0 });
-            AddAxis(new Axis { m_Name = "Oculus_CrossPlatform_PrimaryThumbstickVertical", dead = 0.19f, sensitivity = 1, invert = true, type = 2, axis = 1 });
-            AddAxis(new Axis { m_Name = "Oculus_CrossPlatform_SecondaryThumbstickHorizontal", dead = 0.19f, sensitivity = 1, invert = false, type = 2, axis = 3 });
-            AddAxis(new Axis { m_Name = "Oculus_CrossPlatform_SecondaryThumbstickVertical", dead = 0.19f, sensitivity = 1, invert = true, type = 2, axis = 4 });
+            AddAxis(new Axis { m_Name = Oculus.InputNames.Oculus_CrossPlatform_PrimaryThumbstickHorizontal.ToString(), dead = 0.19f, sensitivity = 1, invert = false, type = 2, axis = 0 });
+            AddAxis(new Axis { m_Name = Oculus.InputNames.Oculus_CrossPlatform_PrimaryThumbstickVertical.ToString(), dead = 0.19f, sensitivity = 1, invert = true, type = 2, axis = 1 });
+            AddAxis(new Axis { m_Name = Oculus.InputNames.Oculus_CrossPlatform_SecondaryThumbstickHorizontal.ToString(), dead = 0.19f, sensitivity = 1, invert = false, type = 2, axis = 3 });
+            AddAxis(new Axis { m_Name = Oculus.InputNames.Oculus_CrossPlatform_SecondaryThumbstickVertical.ToString(), dead = 0.19f, sensitivity = 1, invert = true, type = 2, axis = 4 });
 
         }
 
