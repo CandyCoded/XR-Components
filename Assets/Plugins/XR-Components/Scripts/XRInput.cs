@@ -10,134 +10,82 @@ namespace CandyCoded.XRComponents
 
         public const float TriggerThreshold = 0.75f;
 
-        public static class Oculus
+        public enum InputMapping
+        {
+            Oculus_CrossPlatform_Button_1,
+            Oculus_CrossPlatform_Button_2,
+            Oculus_CrossPlatform_Button_3,
+            Oculus_CrossPlatform_Button_4,
+            Oculus_CrossPlatform_Button_PrimaryThumbstick,
+            Oculus_CrossPlatform_Button_SecondaryThumbstick,
+            Oculus_CrossPlatform_PrimaryIndexTrigger,
+            Oculus_CrossPlatform_SecondaryIndexTrigger,
+            Oculus_CrossPlatform_PrimaryHandTrigger,
+            Oculus_CrossPlatform_SecondaryHandTrigger,
+            Oculus_CrossPlatform_PrimaryThumbstickHorizontal,
+            Oculus_CrossPlatform_PrimaryThumbstickVertical,
+            Oculus_CrossPlatform_SecondaryThumbstickHorizontal,
+            Oculus_CrossPlatform_SecondaryThumbstickVertical
+        }
+
+        public enum Button
+        {
+            One = InputMapping.Oculus_CrossPlatform_Button_1,
+            Two = InputMapping.Oculus_CrossPlatform_Button_2,
+            Three = InputMapping.Oculus_CrossPlatform_Button_3,
+            Four = InputMapping.Oculus_CrossPlatform_Button_4,
+            PrimaryThumbstick = InputMapping.Oculus_CrossPlatform_Button_PrimaryThumbstick,
+            SecondaryThumbstick = InputMapping.Oculus_CrossPlatform_Button_SecondaryThumbstick
+        }
+
+        public enum Axis1D
+        {
+            PrimaryIndexTrigger = InputMapping.Oculus_CrossPlatform_PrimaryIndexTrigger,
+            SecondaryIndexTrigger = InputMapping.Oculus_CrossPlatform_SecondaryIndexTrigger,
+            PrimaryHandTrigger = InputMapping.Oculus_CrossPlatform_PrimaryHandTrigger,
+            SecondaryHandTrigger = InputMapping.Oculus_CrossPlatform_SecondaryHandTrigger
+        }
+
+        public enum Axis2D
+        {
+            PrimaryThumbstickHorizontal = InputMapping.Oculus_CrossPlatform_PrimaryThumbstickHorizontal,
+            PrimaryThumbstickVertical = InputMapping.Oculus_CrossPlatform_PrimaryThumbstickVertical,
+            SecondaryThumbstickHorizontal = InputMapping.Oculus_CrossPlatform_SecondaryThumbstickHorizontal,
+            SecondaryThumbstickVertical = InputMapping.Oculus_CrossPlatform_SecondaryThumbstickVertical
+        }
+
+        public static bool Get(Button button)
         {
 
-            public enum InputNames
-            {
-                Oculus_CrossPlatform_Button_1,
-                Oculus_CrossPlatform_Button_2,
-                Oculus_CrossPlatform_Button_3,
-                Oculus_CrossPlatform_Button_4,
-                Oculus_CrossPlatform_Button_PrimaryThumbstick,
-                Oculus_CrossPlatform_Button_SecondaryThumbstick,
-                Oculus_CrossPlatform_PrimaryIndexTrigger,
-                Oculus_CrossPlatform_SecondaryIndexTrigger,
-                Oculus_CrossPlatform_PrimaryHandTrigger,
-                Oculus_CrossPlatform_SecondaryHandTrigger,
-                Oculus_CrossPlatform_PrimaryThumbstickHorizontal,
-                Oculus_CrossPlatform_PrimaryThumbstickVertical,
-                Oculus_CrossPlatform_SecondaryThumbstickHorizontal,
-                Oculus_CrossPlatform_SecondaryThumbstickVertical
-            }
+            return Input.GetButton(((InputMapping)button).ToString());
 
-            public static class Button
-            {
+        }
 
-                public struct One
-                {
+        public static bool GetDown(Button button)
+        {
 
-                    public static string InputName = InputNames.Oculus_CrossPlatform_Button_1.ToString();
+            return Input.GetButtonDown(((InputMapping)button).ToString());
 
-                    public static bool IsDown { get { return Input.GetButtonDown(InputName); } }
-                    public static bool IsHeld { get { return Input.GetButton(InputName); } }
-                    public static bool IsUp { get { return Input.GetButtonUp(InputName); } }
+        }
 
-                }
+        public static bool GetUp(Button button)
+        {
 
-                public struct Two
-                {
+            return Input.GetButtonUp(((InputMapping)button).ToString());
 
-                    public static string InputName = InputNames.Oculus_CrossPlatform_Button_2.ToString();
+        }
 
-                    public static bool IsDown { get { return Input.GetButtonDown(InputName); } }
-                    public static bool IsHeld { get { return Input.GetButton(InputName); } }
-                    public static bool IsUp { get { return Input.GetButtonUp(InputName); } }
+        public static bool Get(Axis1D button)
+        {
 
-                }
+            return Input.GetAxis(((InputMapping)button).ToString()) > TriggerThreshold;
 
-                public struct Three
-                {
+        }
 
-                    public static string InputName = InputNames.Oculus_CrossPlatform_Button_3.ToString();
+        public static float Get(Axis2D button)
+        {
 
-                    public static bool IsDown { get { return Input.GetButtonDown(InputName); } }
-                    public static bool IsHeld { get { return Input.GetButton(InputName); } }
-                    public static bool IsUp { get { return Input.GetButtonUp(InputName); } }
-
-                }
-
-                public struct Four
-                {
-
-                    public static string InputName = InputNames.Oculus_CrossPlatform_Button_4.ToString();
-
-                    public static bool IsDown { get { return Input.GetButtonDown(InputName); } }
-                    public static bool IsHeld { get { return Input.GetButton(InputName); } }
-                    public static bool IsUp { get { return Input.GetButtonUp(InputName); } }
-
-                }
-
-                public static class PrimaryThumbstick
-                {
-
-                    public static string InputName = InputNames.Oculus_CrossPlatform_Button_PrimaryThumbstick.ToString();
-
-                    public static bool IsDown { get { return Input.GetButtonDown(InputName); } }
-                    public static bool IsHeld { get { return Input.GetButton(InputName); } }
-                    public static bool IsUp { get { return Input.GetButtonUp(InputName); } }
-
-                }
-
-                public static class SecondaryThumbstick
-                {
-
-                    public static string InputName = InputNames.Oculus_CrossPlatform_Button_SecondaryThumbstick.ToString();
-
-                    public static bool IsDown { get { return Input.GetButtonDown(InputName); } }
-                    public static bool IsHeld { get { return Input.GetButton(InputName); } }
-                    public static bool IsUp { get { return Input.GetButtonUp(InputName); } }
-
-                }
-
-                public struct Thumbstick
-                {
-
-                    public static bool IsDown { get { return PrimaryThumbstick.IsDown || SecondaryThumbstick.IsDown; } }
-                    public static bool IsHeld { get { return PrimaryThumbstick.IsHeld || SecondaryThumbstick.IsHeld; } }
-                    public static bool IsUp { get { return PrimaryThumbstick.IsUp || SecondaryThumbstick.IsUp; } }
-
-                }
-
-            }
-
-            public static class Axis1D
-            {
-
-                public static bool PrimaryIndexTrigger { get { return Input.GetAxis(InputNames.Oculus_CrossPlatform_PrimaryIndexTrigger.ToString()) > TriggerThreshold; } }
-                public static bool SecondaryIndexTrigger { get { return Input.GetAxis(InputNames.Oculus_CrossPlatform_SecondaryIndexTrigger.ToString()) > TriggerThreshold; } }
-
-                public static bool PrimaryHandTrigger { get { return Input.GetAxis(InputNames.Oculus_CrossPlatform_PrimaryHandTrigger.ToString()) > TriggerThreshold; } }
-                public static bool SecondaryHandTrigger { get { return Input.GetAxis(InputNames.Oculus_CrossPlatform_SecondaryHandTrigger.ToString()) > TriggerThreshold; } }
-
-                public static bool IndexTrigger { get { return PrimaryIndexTrigger || SecondaryIndexTrigger; } }
-                public static bool HandTrigger { get { return PrimaryHandTrigger || SecondaryHandTrigger; } }
-
-            }
-
-            public static class Axis2D
-            {
-
-                public static float PrimaryThumbstickHorizontal { get { return Input.GetAxis(InputNames.Oculus_CrossPlatform_PrimaryThumbstickHorizontal.ToString()); } }
-                public static float PrimaryThumbstickVertical { get { return Input.GetAxis(InputNames.Oculus_CrossPlatform_PrimaryThumbstickVertical.ToString()); } }
-
-                public static float SecondaryThumbstickHorizontal { get { return Input.GetAxis(InputNames.Oculus_CrossPlatform_SecondaryThumbstickHorizontal.ToString()); } }
-                public static float SecondaryThumbstickVertical { get { return Input.GetAxis(InputNames.Oculus_CrossPlatform_SecondaryThumbstickVertical.ToString()); } }
-
-                public static Vector2 PrimaryThumbstick { get { return new Vector2(PrimaryThumbstickHorizontal, PrimaryThumbstickVertical); } }
-                public static Vector2 SecondaryThumbstick { get { return new Vector2(SecondaryThumbstickHorizontal, SecondaryThumbstickVertical); } }
-
-            }
+            return Input.GetAxis(((InputMapping)button).ToString());
 
         }
 
