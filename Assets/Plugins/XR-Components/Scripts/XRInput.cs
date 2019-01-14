@@ -34,15 +34,80 @@ namespace CandyCoded.XRComponents
             public static class Button
             {
 
-                public static bool One { get { return Input.GetButton(InputNames.Oculus_CrossPlatform_Button_1.ToString()); } }
-                public static bool Two { get { return Input.GetButton(InputNames.Oculus_CrossPlatform_Button_2.ToString()); } }
-                public static bool Three { get { return Input.GetButton(InputNames.Oculus_CrossPlatform_Button_3.ToString()); } }
-                public static bool Four { get { return Input.GetButton(InputNames.Oculus_CrossPlatform_Button_4.ToString()); } }
+                public struct One
+                {
 
-                public static bool PrimaryThumbstick { get { return Input.GetButton(InputNames.Oculus_CrossPlatform_Button_PrimaryThumbstick.ToString()); } }
-                public static bool SecondaryThumbstick { get { return Input.GetButton(InputNames.Oculus_CrossPlatform_Button_SecondaryThumbstick.ToString()); } }
+                    public static string InputName = InputNames.Oculus_CrossPlatform_Button_1.ToString();
 
-                public static bool Thumbstick { get { return PrimaryThumbstick || SecondaryThumbstick; } }
+                    public static bool IsDown { get { return Input.GetButtonDown(InputName); } }
+                    public static bool IsHeld { get { return Input.GetButton(InputName); } }
+                    public static bool IsUp { get { return Input.GetButtonUp(InputName); } }
+
+                }
+
+                public struct Two
+                {
+
+                    public static string InputName = InputNames.Oculus_CrossPlatform_Button_2.ToString();
+
+                    public static bool IsDown { get { return Input.GetButtonDown(InputName); } }
+                    public static bool IsHeld { get { return Input.GetButton(InputName); } }
+                    public static bool IsUp { get { return Input.GetButtonUp(InputName); } }
+
+                }
+
+                public struct Three
+                {
+
+                    public static string InputName = InputNames.Oculus_CrossPlatform_Button_3.ToString();
+
+                    public static bool IsDown { get { return Input.GetButtonDown(InputName); } }
+                    public static bool IsHeld { get { return Input.GetButton(InputName); } }
+                    public static bool IsUp { get { return Input.GetButtonUp(InputName); } }
+
+                }
+
+                public struct Four
+                {
+
+                    public static string InputName = InputNames.Oculus_CrossPlatform_Button_4.ToString();
+
+                    public static bool IsDown { get { return Input.GetButtonDown(InputName); } }
+                    public static bool IsHeld { get { return Input.GetButton(InputName); } }
+                    public static bool IsUp { get { return Input.GetButtonUp(InputName); } }
+
+                }
+
+                public static class PrimaryThumbstick
+                {
+
+                    public static string InputName = InputNames.Oculus_CrossPlatform_Button_PrimaryThumbstick.ToString();
+
+                    public static bool IsDown { get { return Input.GetButtonDown(InputName); } }
+                    public static bool IsHeld { get { return Input.GetButton(InputName); } }
+                    public static bool IsUp { get { return Input.GetButtonUp(InputName); } }
+
+                }
+
+                public static class SecondaryThumbstick
+                {
+
+                    public static string InputName = InputNames.Oculus_CrossPlatform_Button_SecondaryThumbstick.ToString();
+
+                    public static bool IsDown { get { return Input.GetButtonDown(InputName); } }
+                    public static bool IsHeld { get { return Input.GetButton(InputName); } }
+                    public static bool IsUp { get { return Input.GetButtonUp(InputName); } }
+
+                }
+
+                public struct Thumbstick
+                {
+
+                    public static bool IsDown { get { return PrimaryThumbstick.IsDown || SecondaryThumbstick.IsDown; } }
+                    public static bool IsHeld { get { return PrimaryThumbstick.IsHeld || SecondaryThumbstick.IsHeld; } }
+                    public static bool IsUp { get { return PrimaryThumbstick.IsUp || SecondaryThumbstick.IsUp; } }
+
+                }
 
             }
 
