@@ -3,8 +3,10 @@
 ## Features
 
 -   XRControllerVibratation
--   XRInput (See <https://gist.github.com/neogeek/6626de36a93dca5e0810e945e2ea0a9b> for key bindings)
+-   XRInput
 -   XRNodeController
+-   Editor Scripts
+    -   InputManagerSetup
 
 ## Installation
 
