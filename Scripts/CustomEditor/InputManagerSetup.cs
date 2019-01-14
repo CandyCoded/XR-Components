@@ -23,7 +23,7 @@ namespace CandyCoded.XRComponents
             public int axis;
         }
 
-        [MenuItem("CandyCoded/Tools/XR Components/Setup Input")]
+        [MenuItem("CandyCoded/Tools/XR Components/Setup InputManager")]
         public static void SetupAxes()
         {
 
