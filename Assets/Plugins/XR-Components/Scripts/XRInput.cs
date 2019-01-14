@@ -42,6 +42,8 @@ namespace CandyCoded.XRComponents
                 public static bool PrimaryThumbstick { get { return Input.GetButton(InputNames.Oculus_CrossPlatform_Button_PrimaryThumbstick.ToString()); } }
                 public static bool SecondaryThumbstick { get { return Input.GetButton(InputNames.Oculus_CrossPlatform_Button_SecondaryThumbstick.ToString()); } }
 
+                public static bool Thumbstick { get { return PrimaryThumbstick || SecondaryThumbstick; } }
+
             }
 
             public static class Axis1D
@@ -52,6 +54,9 @@ namespace CandyCoded.XRComponents
 
                 public static bool PrimaryHandTrigger { get { return Input.GetAxis(InputNames.Oculus_CrossPlatform_PrimaryHandTrigger.ToString()) > TriggerThreshold; } }
                 public static bool SecondaryHandTrigger { get { return Input.GetAxis(InputNames.Oculus_CrossPlatform_SecondaryHandTrigger.ToString()) > TriggerThreshold; } }
+
+                public static bool IndexTrigger { get { return PrimaryIndexTrigger || SecondaryIndexTrigger; } }
+                public static bool HandTrigger { get { return PrimaryHandTrigger || SecondaryHandTrigger; } }
 
             }
 
