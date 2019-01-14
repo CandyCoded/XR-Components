@@ -43,7 +43,7 @@ namespace CandyCoded.XRComponents
             AddAxis(new Axis { m_Name = InputMapping.Oculus_CrossPlatform_PrimaryThumbstickHorizontal.ToString(), dead = 0.19f, sensitivity = 1, invert = false, type = 2, axis = 0 });
             AddAxis(new Axis { m_Name = InputMapping.Oculus_CrossPlatform_PrimaryThumbstickVertical.ToString(), dead = 0.19f, sensitivity = 1, invert = true, type = 2, axis = 1 });
             AddAxis(new Axis { m_Name = InputMapping.Oculus_CrossPlatform_SecondaryThumbstickHorizontal.ToString(), dead = 0.19f, sensitivity = 1, invert = false, type = 2, axis = 3 });
-            AddAxis(new Axis { m_Name = InputMapping.Oculus_CrossPlatform_PrimaryThumbstickVertical.ToString(), dead = 0.19f, sensitivity = 1, invert = true, type = 2, axis = 4 });
+            AddAxis(new Axis { m_Name = InputMapping.Oculus_CrossPlatform_SecondaryThumbstickVertical.ToString(), dead = 0.19f, sensitivity = 1, invert = true, type = 2, axis = 4 });
 
         }
 
