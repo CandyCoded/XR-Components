@@ -14,13 +14,20 @@ namespace CandyCoded.XRComponents
         public class Axis
         {
             public string m_Name;
+            public string descriptiveName;
+            public string descriptiveNegativeName;
+            public string negativeButton;
             public string positiveButton;
+            public string altNegativeButton;
+            public string altPositiveButton;
             public float gravity;
             public float dead;
             public float sensitivity;
+            public bool snap;
             public bool invert;
             public int type;
             public int axis;
+            public int joyNum;
         }
 
         [MenuItem("CandyCoded/Tools/XR Components/Setup InputManager")]
@@ -84,14 +91,35 @@ namespace CandyCoded.XRComponents
 
                 SerializedProperty axisProperty = axesProperty.GetArrayElementAtIndex(axesProperty.arraySize - 1);
 
-                axisProperty.FindPropertyRelative("m_Name").stringValue = axis.m_Name;
-                axisProperty.FindPropertyRelative("positiveButton").stringValue = axis.positiveButton;
-                axisProperty.FindPropertyRelative("gravity").floatValue = axis.gravity;
-                axisProperty.FindPropertyRelative("dead").floatValue = axis.dead;
-                axisProperty.FindPropertyRelative("sensitivity").floatValue = axis.sensitivity;
-                axisProperty.FindPropertyRelative("invert").boolValue = axis.invert;
-                axisProperty.FindPropertyRelative("type").intValue = axis.type;
-                axisProperty.FindPropertyRelative("axis").intValue = axis.axis;
+                foreach (var field in typeof(Axis).GetFields())
+                {
+
+                    if (field.FieldType.Equals(typeof(string)))
+                    {
+
+                        axisProperty.FindPropertyRelative(field.Name).stringValue = (string)field.GetValue(axis);
+
+                    }
+                    else if (field.FieldType.Equals(typeof(float)))
+                    {
+
+                        axisProperty.FindPropertyRelative(field.Name).floatValue = (float)field.GetValue(axis);
+
+                    }
+                    else if (field.FieldType.Equals(typeof(int)))
+                    {
+
+                        axisProperty.FindPropertyRelative(field.Name).intValue = (int)field.GetValue(axis);
+
+                    }
+                    else if (field.FieldType.Equals(typeof(bool)))
+                    {
+
+                        axisProperty.FindPropertyRelative(field.Name).boolValue = (bool)field.GetValue(axis);
+
+                    }
+
+                }
 
                 serializedObject.ApplyModifiedProperties();
 
