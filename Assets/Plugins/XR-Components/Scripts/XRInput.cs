@@ -16,6 +16,7 @@ namespace CandyCoded.XRComponents
             Oculus_CrossPlatform_Button_2,
             Oculus_CrossPlatform_Button_3,
             Oculus_CrossPlatform_Button_4,
+            Oculus_CrossPlatform_Button_Start,
             Oculus_CrossPlatform_Button_PrimaryThumbstick,
             Oculus_CrossPlatform_Button_SecondaryThumbstick,
             Oculus_CrossPlatform_PrimaryIndexTrigger,
@@ -34,6 +35,7 @@ namespace CandyCoded.XRComponents
             Two = InputMapping.Oculus_CrossPlatform_Button_2,
             Three = InputMapping.Oculus_CrossPlatform_Button_3,
             Four = InputMapping.Oculus_CrossPlatform_Button_4,
+            Start = InputMapping.Oculus_CrossPlatform_Button_Start,
             PrimaryThumbstick = InputMapping.Oculus_CrossPlatform_Button_PrimaryThumbstick,
             SecondaryThumbstick = InputMapping.Oculus_CrossPlatform_Button_SecondaryThumbstick
         }

@@ -43,6 +43,7 @@ namespace CandyCoded.XRComponents
             AddAxis(new Axis { m_Name = InputMapping.Oculus_CrossPlatform_Button_2.ToString(), positiveButton = "joystick button 1", gravity = 1000, dead = 0.001f, sensitivity = 1000 });
             AddAxis(new Axis { m_Name = InputMapping.Oculus_CrossPlatform_Button_3.ToString(), positiveButton = "joystick button 2", gravity = 1000, dead = 0.001f, sensitivity = 1000 });
             AddAxis(new Axis { m_Name = InputMapping.Oculus_CrossPlatform_Button_4.ToString(), positiveButton = "joystick button 3", gravity = 1000, dead = 0.001f, sensitivity = 1000 });
+            AddAxis(new Axis { m_Name = InputMapping.Oculus_CrossPlatform_Button_Start.ToString(), positiveButton = "joystick button 6", gravity = 1000, dead = 0.001f, sensitivity = 1000 });
 
             AddAxis(new Axis { m_Name = InputMapping.Oculus_CrossPlatform_Button_PrimaryThumbstick.ToString(), positiveButton = "joystick button 8", sensitivity = 0.1f });
             AddAxis(new Axis { m_Name = InputMapping.Oculus_CrossPlatform_Button_SecondaryThumbstick.ToString(), positiveButton = "joystick button 9", sensitivity = 0.1f });
