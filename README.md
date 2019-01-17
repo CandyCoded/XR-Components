@@ -21,3 +21,75 @@
     }
 }
 ```
+
+## Documentation
+
+### XRControllerVibration
+
+### XRInput
+
+![](Images//OculusControllersTouchControllers.jpg)
+
+Reference: <https://docs.unity3d.com/Manual/OculusControllers.html>
+
+#### Button
+
+| Name                |
+| ------------------- |
+| One                 |
+| Two                 |
+| Three               |
+| Four                |
+| Start               |
+| PrimaryThumbstick   |
+| SecondaryThumbstick |
+
+#### Axis1D
+
+| Name                  |
+| --------------------- |
+| PrimaryIndexTrigger   |
+| SecondaryIndexTrigger |
+| PrimaryHandTrigger    |
+| SecondaryHandTrigger  |
+
+#### Axis2D
+
+| Name                          |
+| ----------------------------- |
+| PrimaryThumbstickHorizontal   |
+| PrimaryThumbstickVertical     |
+| SecondaryThumbstickHorizontal |
+| SecondaryThumbstickVertical   |
+
+#### Get
+
+```csharp
+if (XRInput.Get(XRInput.Button.One)) {
+
+    Debug.Log("Button One is being held");
+
+}
+```
+
+#### GetDown
+
+```csharp
+if (XRInput.GetDown(XRInput.Button.One)) {
+
+    Debug.Log("Button One was pressed");
+
+}
+```
+
+#### GetUp
+
+```csharp
+if (XRInput.GetUp(XRInput.Button.One)) {
+
+    Debug.Log("Button One was released");
+
+}
+```
+
+### XRNodeController
