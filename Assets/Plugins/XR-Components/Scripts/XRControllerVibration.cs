@@ -38,7 +38,7 @@ namespace CandyCoded.XRComponents
 
         }
 
-        public static void VibrateController(this XRNode node, float seconds, AnimationCurve animationCurve)
+        public static void VibrateController(this XRNode node, AnimationCurve animationCurve)
         {
 
             var device = InputDevices.GetDeviceAtXRNode(node);
