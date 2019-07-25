@@ -34,20 +34,17 @@ namespace CandyCoded.XRComponents
                 return;
             }
 
-            position = InputTracking.GetLocalPosition(nodeType);
-            rotation = InputTracking.GetLocalRotation(nodeType);
-
             if (!lockPosition)
             {
 
-                gameObject.transform.position = position;
+                gameObject.transform.position = InputTracking.GetLocalPosition(nodeType);
 
             }
 
             if (!lockRotation)
             {
 
-                gameObject.transform.rotation = rotation;
+                gameObject.transform.rotation = InputTracking.GetLocalRotation(nodeType);
 
             }
 
