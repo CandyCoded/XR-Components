@@ -6,7 +6,7 @@ using UnityEngine.XR;
 namespace CandyCoded.XRComponents
 {
 
-    public static class XRControllerVibratation
+    public static class XRControllerVibration
     {
 
         public static void VibrateController(this XRNode node, float seconds, float amplitude)
