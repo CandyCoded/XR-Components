@@ -111,17 +111,31 @@ namespace CandyCoded.XRComponents
 
         }
 
-        public static bool Get(Axis1D button)
-        {
-
-            return Input.GetAxis(((InputMapping)button).ToString()) > TriggerThreshold;
-
-        }
-
-        public static float Get(Axis2D button)
+        public static float GetAxis(Axis1D button)
         {
 
             return Input.GetAxis(((InputMapping)button).ToString());
+
+        }
+
+        public static float GetAxis(Axis2D button)
+        {
+
+            return Input.GetAxis(((InputMapping)button).ToString());
+
+        }
+
+        public static bool Get(Axis1D button)
+        {
+
+            return GetAxis(button) > TriggerThreshold;
+
+        }
+
+        public static bool Get(Axis2D button)
+        {
+
+            return GetAxis(button) < -TriggerThreshold || GetAxis(button) > TriggerThreshold;
 
         }
 
