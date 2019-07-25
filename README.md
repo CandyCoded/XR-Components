@@ -1,12 +1,12 @@
 # XR Components
 
+## Introduction
+
 ## Features
 
--   XRControllerVibratation
--   XRInput
--   XRNodeController
--   Editor Scripts
-    -   InputManagerSetup
+-   Headset and controller tracking
+-   Controller input button and axis mapping
+-   Controller vibration
 
 ## Installation
 
@@ -22,74 +22,12 @@
 }
 ```
 
-## Documentation
+## Contents
 
-### XRControllerVibration
-
-### XRInput
-
-![](Images//OculusControllersTouchControllers.jpg)
-
-Reference: <https://docs.unity3d.com/Manual/OculusControllers.html>
-
-#### Button
-
-| Name                |
-| ------------------- |
-| One                 |
-| Two                 |
-| Three               |
-| Four                |
-| Start               |
-| PrimaryThumbstick   |
-| SecondaryThumbstick |
-
-#### Axis1D
-
-| Name                  |
-| --------------------- |
-| PrimaryIndexTrigger   |
-| SecondaryIndexTrigger |
-| PrimaryHandTrigger    |
-| SecondaryHandTrigger  |
-
-#### Axis2D
-
-| Name                          |
-| ----------------------------- |
-| PrimaryThumbstickHorizontal   |
-| PrimaryThumbstickVertical     |
-| SecondaryThumbstickHorizontal |
-| SecondaryThumbstickVertical   |
-
-#### Get
-
-```csharp
-if (XRInput.Get(XRInput.Button.One)) {
-
-    Debug.Log("Button One is being held");
-
-}
-```
-
-#### GetDown
-
-```csharp
-if (XRInput.GetDown(XRInput.Button.One)) {
-
-    Debug.Log("Button One was pressed");
-
-}
-```
-
-#### GetUp
-
-```csharp
-if (XRInput.GetUp(XRInput.Button.One)) {
-
-    Debug.Log("Button One was released");
-
-}
-```
-
-### XRNodeController
+-   [Introduction](Documentation/Introduction.md)
+-   [Components](Documentation/1.%20Components/)
+	-   [XRControllerVibration](Documentation/1.%20Components/XRControllerVibration.md)
+	-   [XRInput](Documentation/1.%20Components/XRInput.md)
+	-   [XRNodeController](Documentation/1.%20Components/XRNodeController.md)
+-   [Unity Editor Extensions](Documentation/2.%20Unity%20Editor%20Extensions/)
+	-   [InputManagerSetup](Documentation/2.%20Unity%20Editor%20Extensions/InputManagerSetup.md)
