@@ -1,10 +1,18 @@
 // Copyright (c) Scott Doxey. All Rights Reserved. Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.XR;
 
 namespace CandyCoded.XRComponents
 {
+
+    [Serializable]
+    public class TrackingEvent : UnityEvent<bool>
+    {
+
+    }
 
     public class XRNodeController : MonoBehaviour
     {
@@ -18,6 +26,9 @@ namespace CandyCoded.XRComponents
 
         [SerializeField]
         private bool lockRotation;
+
+        [SerializeField]
+        private TrackingEvent TrackingUpdated;
 #pragma warning restore CS0649
 
         public bool isTracking { get; private set; }
@@ -53,12 +64,14 @@ namespace CandyCoded.XRComponents
         private void HandleTrackingEvent(XRNodeState obj)
         {
 
-            if (obj.nodeType == nodeType)
+            if (obj.nodeType != nodeType)
             {
-
-                isTracking = obj.tracked;
-
+                return;
             }
+
+            isTracking = obj.tracked;
+
+            TrackingUpdated?.Invoke(isTracking);
 
         }
 
