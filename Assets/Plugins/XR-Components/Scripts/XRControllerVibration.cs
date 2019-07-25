@@ -14,9 +14,7 @@ namespace CandyCoded.XRComponents
 
             var device = InputDevices.GetDeviceAtXRNode(node);
 
-            var hapticCapabilities = new HapticCapabilities();
-
-            if (!device.TryGetHapticCapabilities(out hapticCapabilities))
+            if (!device.TryGetHapticCapabilities(out var hapticCapabilities))
             {
                 return;
             }
@@ -43,9 +41,7 @@ namespace CandyCoded.XRComponents
 
             var device = InputDevices.GetDeviceAtXRNode(node);
 
-            var hapticCapabilities = new HapticCapabilities();
-
-            if (!device.TryGetHapticCapabilities(out hapticCapabilities))
+            if (!device.TryGetHapticCapabilities(out var hapticCapabilities))
             {
                 return;
             }
