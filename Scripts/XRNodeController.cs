@@ -23,30 +23,31 @@ namespace CandyCoded.XRComponents
         public bool isTracking { get; private set; }
 
         public Vector3 position { get; private set; }
+
         public Quaternion rotation { get; private set; }
 
         private void Update()
         {
 
-            if (isTracking)
+            if (!isTracking)
+            {
+                return;
+            }
+
+            position = InputTracking.GetLocalPosition(nodeType);
+            rotation = InputTracking.GetLocalRotation(nodeType);
+
+            if (!lockPosition)
             {
 
-                position = InputTracking.GetLocalPosition(nodeType);
-                rotation = InputTracking.GetLocalRotation(nodeType);
+                gameObject.transform.position = position;
 
-                if (!lockPosition)
-                {
+            }
 
-                    gameObject.transform.position = position;
+            if (!lockRotation)
+            {
 
-                }
-
-                if (!lockRotation)
-                {
-
-                    gameObject.transform.rotation = rotation;
-
-                }
+                gameObject.transform.rotation = rotation;
 
             }
 

@@ -16,23 +16,23 @@ namespace CandyCoded.XRComponents
 
             var hapticCapabilities = new HapticCapabilities();
 
-            if (device.TryGetHapticCapabilities(out hapticCapabilities))
+            if (!device.TryGetHapticCapabilities(out hapticCapabilities))
+            {
+                return;
+            }
+
+            if (hapticCapabilities.supportsBuffer)
             {
 
-                if (hapticCapabilities.supportsBuffer)
-                {
+                var buffer = GenerateHapticBufferWithAmplitude(seconds, amplitude, hapticCapabilities.bufferFrequencyHz);
 
-                    var buffer = GenerateHapticBufferWithAmplitude(seconds, amplitude, hapticCapabilities.bufferFrequencyHz);
+                device.SendHapticBuffer(0, buffer);
 
-                    device.SendHapticBuffer(0, buffer);
+            }
+            else if (hapticCapabilities.supportsImpulse)
+            {
 
-                }
-                else if (hapticCapabilities.supportsImpulse)
-                {
-
-                    device.SendHapticImpulse(0, amplitude, seconds);
-
-                }
+                device.SendHapticImpulse(0, amplitude, seconds);
 
             }
 
@@ -45,19 +45,19 @@ namespace CandyCoded.XRComponents
 
             var hapticCapabilities = new HapticCapabilities();
 
-            if (device.TryGetHapticCapabilities(out hapticCapabilities))
+            if (!device.TryGetHapticCapabilities(out hapticCapabilities))
             {
-
-                if (hapticCapabilities.supportsBuffer)
-                {
-
-                    var buffer = GenerateHapticBufferFromAnimationCuve(animationCurve, hapticCapabilities.bufferFrequencyHz);
-
-                    device.SendHapticBuffer(0, buffer);
-
-                }
-
+                return;
             }
+
+            if (!hapticCapabilities.supportsBuffer)
+            {
+                return;
+            }
+
+            var buffer = GenerateHapticBufferFromAnimationCuve(animationCurve, hapticCapabilities.bufferFrequencyHz);
+
+            device.SendHapticBuffer(0, buffer);
 
         }
 
@@ -68,7 +68,7 @@ namespace CandyCoded.XRComponents
 
             var clip = new byte[(int)(bufferFrequencyHz * seconds)];
 
-            for (int i = 0; i < clip.Length; i += 1)
+            for (var i = 0; i < clip.Length; i += 1)
             {
                 clip[i] = amplitudeByteValue;
             }
@@ -84,7 +84,7 @@ namespace CandyCoded.XRComponents
 
             var clip = new byte[(int)(bufferFrequencyHz * seconds)];
 
-            for (int i = 0; i < clip.Length; i += 1)
+            for (var i = 0; i < clip.Length; i += 1)
             {
                 clip[i] = (byte)Mathf.Lerp(byte.MinValue, byte.MaxValue, animationCurve.Evaluate(Mathf.InverseLerp(0, clip.Length, i)));
             }
