@@ -1,6 +1,7 @@
 // Copyright (c) Scott Doxey. All Rights Reserved. Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR;
@@ -18,14 +19,14 @@ namespace CandyCoded.XRComponents
     {
 
         [SerializeField]
-        private XRNode nodeType = XRNode.LeftHand;
+        private XRNode _nodeType = XRNode.LeftHand;
 
 #pragma warning disable CS0649
         [SerializeField]
-        private bool lockPosition;
+        private bool _lockPosition;
 
         [SerializeField]
-        private bool lockRotation;
+        private bool _lockRotation;
 
         [SerializeField]
         private TrackingEvent TrackingUpdated;
@@ -33,9 +34,23 @@ namespace CandyCoded.XRComponents
 
         public bool isTracking { get; private set; }
 
-        public Vector3 position { get; private set; }
+        private Vector3 _position;
 
-        public Quaternion rotation { get; private set; }
+        public Vector3 position => _position;
+
+        private Quaternion _rotation;
+
+        public Quaternion rotation => _rotation;
+
+        private Vector3 _velocity;
+
+        public Vector3 velocity => _velocity;
+
+        private Vector3 _angularVelocity;
+
+        public Vector3 angularVelocity => _angularVelocity;
+
+        private readonly List<XRNodeState> _nodeStates = new List<XRNodeState>();
 
         private void Update()
         {
@@ -45,29 +60,44 @@ namespace CandyCoded.XRComponents
                 return;
             }
 
-            if (!lockPosition)
+            InputTracking.GetNodeStates(_nodeStates);
+
+            foreach (var nodeState in _nodeStates)
             {
 
-                position = InputTracking.GetLocalPosition(nodeType);
+                if (!nodeState.nodeType.Equals(_nodeType))
+                {
+                    continue;
+                }
+
+                nodeState.TryGetPosition(out _position);
+                nodeState.TryGetRotation(out _rotation);
+
+                nodeState.TryGetVelocity(out _velocity);
+                nodeState.TryGetAngularVelocity(out _angularVelocity);
 
             }
 
-            if (!lockRotation)
+            if (!_lockPosition)
             {
 
-                rotation = InputTracking.GetLocalRotation(nodeType);
+                gameObject.transform.position = position;
 
             }
 
-            gameObject.transform.position = position;
-            gameObject.transform.rotation = rotation;
+            if (!_lockRotation)
+            {
+
+                gameObject.transform.rotation = rotation;
+
+            }
 
         }
 
         private void HandleTrackingEvent(XRNodeState obj)
         {
 
-            if (obj.nodeType != nodeType)
+            if (!obj.nodeType.Equals(_nodeType))
             {
                 return;
             }
