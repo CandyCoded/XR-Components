@@ -51,7 +51,7 @@ namespace CandyCoded.XRComponents
                 return;
             }
 
-            var buffer = GenerateHapticBufferFromAnimationCuve(animationCurve, hapticCapabilities.bufferFrequencyHz);
+            var buffer = GenerateHapticBufferFromAnimationCurve(animationCurve, hapticCapabilities.bufferFrequencyHz);
 
             device.SendHapticBuffer(0, buffer);
 
@@ -73,7 +73,7 @@ namespace CandyCoded.XRComponents
 
         }
 
-        public static byte[] GenerateHapticBufferFromAnimationCuve(AnimationCurve animationCurve, uint bufferFrequencyHz)
+        public static byte[] GenerateHapticBufferFromAnimationCurve(AnimationCurve animationCurve, uint bufferFrequencyHz)
         {
 
             var seconds = animationCurve.keys[animationCurve.length - 1].time;
