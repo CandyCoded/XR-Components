@@ -15,6 +15,7 @@ namespace CandyCoded.XRComponents
 
     }
 
+    [AddComponentMenu("CandyCoded/XR Components/XR Node Controller")]
     public class XRNodeController : MonoBehaviour
     {
 

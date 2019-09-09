@@ -9,6 +9,7 @@ namespace CandyCoded.XRComponents
 
     [RequireComponent(typeof(Collider))]
     [RequireComponent(typeof(XRNodeController))]
+    [AddComponentMenu("CandyCoded/XR Components/XR Grabber")]
     public class XRGrabber : MonoBehaviour
     {
 

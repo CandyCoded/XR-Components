@@ -7,6 +7,7 @@ namespace CandyCoded.XRComponents
 
     [RequireComponent(typeof(Collider))]
     [RequireComponent(typeof(Rigidbody))]
+    [AddComponentMenu("CandyCoded/XR Components/XR Grabbable")]
     public class XRGrabbable : MonoBehaviour
     {
 
