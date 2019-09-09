@@ -1,61 +1,82 @@
+// Copyright (c) Scott Doxey. All Rights Reserved. Licensed under the MIT License. See LICENSE in the project root for license information.
+
 using System.Collections.Generic;
 using System.Linq;
-using CandyCoded.XRComponents;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
-public class XRGrabber : MonoBehaviour
+namespace CandyCoded.XRComponents
 {
 
-    private readonly Dictionary<Collider, XRGrabbable> collisions = new Dictionary<Collider, XRGrabbable>();
-
-    private XRGrabbable grabbed;
-
-    private Transform parentTransform => gameObject.transform;
-
-    private void Update()
+    [RequireComponent(typeof(Collider))]
+    [RequireComponent(typeof(XRNodeController))]
+    public class XRGrabber : MonoBehaviour
     {
 
-        if (XRInput.GetDown(XRInput.Button.One))
+        [SerializeField]
+        private XRInput.Axis1D _trigger = XRInput.Axis1D.PrimaryIndexTrigger;
+
+        private readonly Dictionary<Collider, XRGrabbable> _collisions = new Dictionary<Collider, XRGrabbable>();
+
+        private XRNodeController _nodeController;
+
+        public XRNodeController nodeController => _nodeController;
+
+        private XRGrabbable _grabbed;
+
+        public Transform parentTransform => gameObject.transform;
+
+        private void Awake()
         {
 
-            if (!grabbed.Equals(null) || collisions.Count <= 0)
+            _nodeController = gameObject.GetComponent < XRNodeController>();
+
+        }
+
+        private void Update()
+        {
+
+            if (XRInput.Get(_trigger))
             {
-                return;
+
+                if (_grabbed || _collisions.Count <= 0)
+                {
+                    return;
+                }
+
+                _grabbed = _collisions.OrderBy(c => Vector3.Distance(c.Key.gameObject.transform.position, gameObject.transform.position)).FirstOrDefault().Value;
+
+                _grabbed.OnGrab(this);
+
+            }
+            else if (_grabbed)
+            {
+
+                _grabbed.OnRelease(this);
+
+                _grabbed = null;
+
             }
 
-            grabbed = collisions.OrderBy(c => Vector3.Distance(c.Key.gameObject.transform.position, gameObject.transform.position)).FirstOrDefault().Value;
-
-            grabbed.OnGrab(parentTransform);
-
         }
-        else if (XRInput.GetUp(XRInput.Button.One))
+
+        private void OnTriggerEnter(Collider other)
         {
 
-            grabbed.OnRelease();
-
-            grabbed = null;
+            if (other.gameObject.GetComponent<XRGrabbable>() != null && !_collisions.ContainsKey(other))
+            {
+                _collisions.Add(other, other.gameObject.GetComponent<XRGrabbable>());
+            }
 
         }
 
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-
-        if (other.gameObject.GetComponent<XRGrabbable>() != null && !collisions.ContainsKey(other))
+        private void OnTriggerExit(Collider other)
         {
-            collisions.Add(other, other.gameObject.GetComponent<XRGrabbable>());
-        }
 
-    }
+            if (_collisions.ContainsKey(other))
+            {
+                _collisions.Remove(other);
+            }
 
-    private void OnTriggerExit(Collider other)
-    {
-
-        if (collisions.ContainsKey(other))
-        {
-            collisions.Remove(other);
         }
 
     }
